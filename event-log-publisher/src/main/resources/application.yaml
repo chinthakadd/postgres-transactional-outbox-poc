@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: account
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    template:
+      default-topic: account.event
+
+eventpub:
+  replication-slot: txn_outbox_slot
+  publication: events
+  eventTable: account.event
+
+postgres-replication:
+  db-url: jdbc:postgresql://localhost:5432/testdb
+  username: postgres
+  password: postgres
+  supported-min-server-version: 9.4
+  replication: database
+  query-mode: simple

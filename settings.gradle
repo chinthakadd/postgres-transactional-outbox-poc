@@ -1,0 +1,4 @@
+rootProject.name = 'transactional-outbox-poc'
+include 'event-log-publisher'
+include 'account-ms'
+
