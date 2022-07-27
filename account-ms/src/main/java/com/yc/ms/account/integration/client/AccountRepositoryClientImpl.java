@@ -22,16 +22,14 @@ public class AccountRepositoryClientImpl implements AccountRepositoryClient {
 
     @Override
     public Account saveAccount(Account account) {
-        return proxy.execute(() -> {
-            AccountEntity persisted = accountRepository.save(AccountEntity.builder()
-                    .accountNumber(account.getAccountNumber())
-                    .accountStatus(AccountStatus.ACTIVE)
-                    .accountType(account.getAccountType())
-                    .customerId(account.getCustomerId())
-                    .build());
-            account.setAccountId(String.valueOf(persisted.getId()));
-            account.setCreatedAt(persisted.getCreatedAt());
-            return account;
-        });
+        AccountEntity persisted = accountRepository.save(AccountEntity.builder()
+                .accountNumber(account.getAccountNumber())
+                .accountStatus(AccountStatus.ACTIVE)
+                .accountType(account.getAccountType())
+                .customerId(account.getCustomerId())
+                .build());
+        account.setAccountId(String.valueOf(persisted.getId()));
+        account.setCreatedAt(persisted.getCreatedAt());
+        return account;
     }
 }

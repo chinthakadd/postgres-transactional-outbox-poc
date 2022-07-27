@@ -8,6 +8,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
+/**
+ * TODO: Implement Kafka | JDBC Transactions - https://leetcode.com/explore/featured/card/sql-language/684/sql-relationship/4338/
+ * <p>
+ * TODO: To avoid contention, we need to implement an optimistic concurrency approach here.
+ * first reader to mark the message as READ should proceed to publish the message.
+ * other instances should back out.
+ */
 @Slf4j
 @Service
 public class MessagePublisherService {
@@ -22,9 +29,6 @@ public class MessagePublisherService {
 
     public void publishMessage(Map<String, String> eventMessage) {
 
-        // TODO: To avoid contention, we need to implement an optimistic concurrency approach here.
-        // first reader to mark the message as READ should proceed to publish the message.
-        // other instances should back out.
         String id = eventMessage.get("id");
         String data = eventMessage.get("data");
         log.info("Event Posted [id = {}, data = {}]", id, data);

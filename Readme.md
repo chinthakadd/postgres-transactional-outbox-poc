@@ -1,9 +1,23 @@
 
 # Transactional Outbox - Using Postgres Logical Replication 
 
-## High Level Idea
+## Overview
 
+This is a Proof of Concept to build a simplified implementation of Transactional Outbox pattern for microservice architecture where Kafka and Postgres Database are in use.
+
+**What is Transactional Outbox Pattern?**
+
+TODO: More to come on this.
+
+### Objective
+
+### Key Concepts / Technologies in Use
+
+### Design
+The following is an design overview of how this implementation is done.
 ![High Level Design](_images/hld.png)
+
+
 
 More docs to come...
 
@@ -85,3 +99,9 @@ SELECT * from pg_publication where pubname='eventpub';
 - https://www.postgresql.org/docs/current/protocol-logicalrep-message-formats.html
 - Great explanation and useful code:
   - https://github.com/davecramer/LogicalDecode
+- Spring Domain Events
+  - https://docs.spring.io/spring-data/commons/docs/current/reference/html/#core.domain-events
+  - https://www.baeldung.com/spring-data-ddd
+
+- Debezium Implementation
+  - https://github.com/debezium/debezium/blob/d81b5578652dbc1d81ea8a7793ee221ab9ec8e57/debezium-connector-postgres/src/main/java/io/debezium/connector/postgresql/connection/PostgresReplicationConnection.java#L403
